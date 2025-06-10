@@ -1,14 +1,16 @@
 import './MovieCard.css';
 
-const MovieCard = () => {
+const MovieCard = (props) => {
     return (
         <div className = "movieCardContainer">
-            <img className = "movieIMG" src="https://picsum.photos/200/300" alt="image" />
-            <p className = "movieName"> MOVIE NAME</p>
-            <p className = "movieRating"> MOVIE RATING</p>
+            <img className = "movieIMG" src= {props.imgURL} alt="image" />
+            <p className = "movieName"> {props.name}</p>
+            <p className = "movieRating"> {props.rating}</p>
         </div>
 
     );
 };
 
 export default MovieCard
+
+

@@ -4,12 +4,7 @@ import MovieCard from './MovieCard';
 const MovieList = () => {
     return (
         <div className = "movieContainer">
-            <MovieCard/>
-            <MovieCard/>
-            <MovieCard/>
-            <MovieCard/>
-            <MovieCard/>
-            <MovieCard/>
+            <MovieCard imgURL = "https://picsum.photos/200/300" name = "King kong" rating = "10/10" />
         </div>
 
     );
