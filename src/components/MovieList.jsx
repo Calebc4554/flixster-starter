@@ -1,24 +1,23 @@
+import React from 'react';
 import '../components-css/MovieList.css';
 import MovieCard from './MovieCard';
 
-const MovieList = () => {
+const MovieList = ({ movies }) => {
+    if (!movies || movies.length === 0) {
+    return <p>Loading movies...</p>;
+    }
     return (
-        <div className = "movieContainer">
-            <MovieCard imgURL = "https://picsum.photos/200/300" name = "King kong" rating = "10/10" />
-            <MovieCard imgURL = "https://picsum.photos/200/300" name = "King kong" rating = "10/10" />
-            <MovieCard imgURL = "https://picsum.photos/200/300" name = "King kong" rating = "10/10" />
-            <MovieCard imgURL = "https://picsum.photos/200/300" name = "King kong" rating = "10/10" />
-            <MovieCard imgURL = "https://picsum.photos/200/300" name = "King kong" rating = "10/10" />
-            <MovieCard imgURL = "https://picsum.photos/200/300" name = "King kong" rating = "10/10" />
-            <MovieCard imgURL = "https://picsum.photos/200/300" name = "King kong" rating = "10/10" />
-            <MovieCard imgURL = "https://picsum.photos/200/300" name = "King kong" rating = "10/10" />
-            <MovieCard imgURL = "https://picsum.photos/200/300" name = "King kong" rating = "10/10" />
-            <MovieCard imgURL = "https://picsum.photos/200/300" name = "King kong" rating = "10/10" />
-            <MovieCard imgURL = "https://picsum.photos/200/300" name = "King kong" rating = "10/10" />
-            <MovieCard imgURL = "https://picsum.photos/200/300" name = "King kong" rating = "10/10" />
+        <div className="movieContainer">
+            {movies.map(movie => 
+                <MovieCard
+                    key={movie.id}
+                    imgURL={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
+                    name={movie.title}
+                    rating={movie.vote_average}
+                />
+            )}
         </div>
+        );
+}
 
-    );
-};
-
-export default MovieList
+export default MovieList;
