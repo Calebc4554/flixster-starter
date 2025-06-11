@@ -2,57 +2,79 @@ import React, { useState, useEffect } from 'react';
 import '../components-css/App.css';
 import MovieList from './MovieList';
 
-const App = () => {
-  const [movies, setMovies] = useState([]); 
-  const [page, setPage] = useState(1); 
-  const [searchQuery, setSearchQuery] = useState('');
+  const App = () => {
+    const [movies, setMovies] = useState([]); 
+    const [page, setPage] = useState(1); 
+    const [searchQuery, setSearchQuery] = useState('');
+    const [isSearchClicked, setIsSearchClicked] = useState(false);
+    const [isNowPlayingClicked, setIsNowPlayingClicked] = useState(true);
 
-  
-  const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
-const fetchMovies = () => {
-    const options = {
-      method: 'GET',
-      headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4OGYxOGUzOGRmYTc0YzFiZjBlZjU1MGJiZjk0M2U4MCIsIm5iZiI6MTc0OTUxMTY2Mi43MzUwMDAxLCJzdWIiOiI2ODQ3NmRlZWZjNjMwMGQ3YjMzZmNiZmUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.ICuI9VPqBEqEyv2k-Wv5pPDKj0iGUGbIMFsI98cropc'
-      }
+    const handleSearchChange = (event) => {
+      setSearchQuery(event.target.value);
     };
 
-    let url;
-    if (searchQuery) {
-      url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(searchQuery)}&language=en-US&page=${page}`;
-    } else {
-      url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`;
+    const handleSearchClick = () => {
+      setIsSearchClicked(true);
+      setIsNowPlayingClicked(false);
+      setPage(1);
+    };
+
+    const handleNowPlayingClick = () => {
+      setIsNowPlayingClicked(true);
+      setIsSearchClicked(false);
+      setSearchQuery('');
+      setPage(1);
+    };
+
+    const fetchMovies = () => {
+      const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4OGYxOGUzOGRmYTc0YzFiZjBlZjU1MGJiZjk0M2U4MCIsIm5iZiI6MTc0OTUxMTY2Mi43MzUwMDAxLCJzdWIiOiI2ODQ3NmRlZWZjNjMwMGQ3YjMzZmNiZmUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.ICuI9VPqBEqEyv2k-Wv5pPDKj0iGUGbIMFsI98cropc'
+        }
+      };
+
+      let url;
+      if (isSearchClicked) {
+        url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(searchQuery)}&language=en-US&page=${page}`;
+      } else {
+        url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`;
+      }
+
+      fetch(url, options)
+        .then(res => res.json())
+        .then(data => {
+          if (page === 1) {
+            setMovies(data.results);
+          } else {
+            setMovies(prevMovies => [...prevMovies, ...data.results]);
+          }
+        })
+
+        .catch(err => console.error(err))
+        .finally(() => {
+          setIsSearchClicked(false);
+        });
+    };
+
+    const loadMore = () => {
+      setPage(prevPage => prevPage + 1);
     }
 
-    fetch(url, options)
-      .then(res => res.json())
-      .then(data => {
-        if (page === 1) {
-          setMovies(data.results);
-        } else {
-          setMovies(prevMovies => [...prevMovies, ...data.results]);
-        }
-      })
-      .catch(err => console.error(err));
-};
+    useEffect(() => {
+      if (isSearchClicked || isNowPlayingClicked || page > 1) {
+        fetchMovies();
+      }
 
-  const loadMore = () => {
-  setPage(prevPage => prevPage + 1);
-  }
+    }, [page, isSearchClicked, isNowPlayingClicked]);
 
-  useEffect(() => {
-    fetchMovies();
-  }, [page, searchQuery]);
-
-return (
+    return (
     <div className="App">
       <header>
         <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search" />
-        <button onClick = {() => {setPage(1); fetchMovies(); }} >Search</button>
+        <button onClick={handleSearchClick}> Search</button>
+        <button onClick={handleNowPlayingClick}> Now Playing</button>
       </header>
       <MovieList movies = {movies} />
       <div>
@@ -61,4 +83,5 @@ return (
     </div>
   );
 }
+
 export default App;
