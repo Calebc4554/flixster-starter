@@ -18,13 +18,10 @@ import MovieList from './MovieList';
       setIsNowPlayingClicked(false);
     };
 
-    const handleNowPlayingClick = () => {
-      setIsNowPlayingClicked(true);
-      setIsSearchClicked(false);
-    };
-
     const handleClearClick = () => {
       setSearchQuery('');
+      setIsNowPlayingClicked(true);
+      setIsSearchClicked(false);
     };
 
 
@@ -76,7 +73,6 @@ import MovieList from './MovieList';
       <header>
         <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search" />
         <button onClick={handleSearchClick}> Search</button>
-        <button onClick={handleNowPlayingClick}> Now Playing</button>
         <button onClick={handleClearClick}> Clear </button>
         <select>
           <option value="volvo">Volvo</option>
