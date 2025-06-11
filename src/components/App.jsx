@@ -16,15 +16,17 @@ import MovieList from './MovieList';
     const handleSearchClick = () => {
       setIsSearchClicked(true);
       setIsNowPlayingClicked(false);
-      setPage(1);
     };
 
     const handleNowPlayingClick = () => {
       setIsNowPlayingClicked(true);
       setIsSearchClicked(false);
-      setSearchQuery('');
-      setPage(1);
     };
+
+    const handleClearClick = () => {
+      setSearchQuery('');
+    };
+
 
     const fetchMovies = () => {
       const options = {
@@ -75,6 +77,13 @@ import MovieList from './MovieList';
         <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search" />
         <button onClick={handleSearchClick}> Search</button>
         <button onClick={handleNowPlayingClick}> Now Playing</button>
+        <button onClick={handleClearClick}> Clear </button>
+        <select>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
       </header>
       <MovieList movies = {movies} />
       <div>
