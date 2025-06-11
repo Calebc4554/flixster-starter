@@ -8,6 +8,19 @@ import MovieList from './MovieList';
     const [searchQuery, setSearchQuery] = useState('');
     const [isSearchClicked, setIsSearchClicked] = useState(false);
     const [isNowPlayingClicked, setIsNowPlayingClicked] = useState(true);
+    const [sortOption, setSortOption] = useState('title');
+
+  const sortMovies = (movies, sortOption) => {
+    if (sortOption === 'title') {
+      return movies.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sortOption === 'releaseDate') {
+      return movies.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+    } else if (sortOption === 'voteAverage') {
+      return movies.sort((a, b) => b.vote_average - a.vote_average);
+    } else {
+      return movies;
+    }
+  };
 
     const handleSearchChange = (event) => {
       setSearchQuery(event.target.value);
@@ -65,8 +78,12 @@ import MovieList from './MovieList';
       if (isSearchClicked || isNowPlayingClicked || page > 1) {
         fetchMovies();
       }
-
     }, [page, isSearchClicked, isNowPlayingClicked]);
+
+    useEffect(() => {
+      const sortedMovies = sortMovies(movies, sortOption);
+      setMovies(sortedMovies);
+    }, [sortOption]);
 
     return (
     <div className="App">
@@ -74,14 +91,13 @@ import MovieList from './MovieList';
         <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search" />
         <button onClick={handleSearchClick}> Search</button>
         <button onClick={handleClearClick}> Clear </button>
-        <select>
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
+        <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+          <option value="title">Title (alphabetic, A-Z)</option>
+          <option value="releaseDate">Release date (chronologically, most recent to oldest)</option>
+          <option value="voteAverage">Vote average (descending, highest to lowest)</option>
         </select>
       </header>
-      <MovieList movies = {movies} />
+      <MovieList movies={sortMovies(movies, sortOption)} />
       <div>
         <button onClick={loadMore}>Load More</button>
       </div>
