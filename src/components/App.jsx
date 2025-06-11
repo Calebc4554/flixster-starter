@@ -5,8 +5,14 @@ import MovieList from './MovieList';
 const App = () => {
   const [movies, setMovies] = useState([]); 
   const [page, setPage] = useState(1); 
+  const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
+  
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+const fetchMovies = () => {
     const options = {
       method: 'GET',
       headers: {
@@ -15,7 +21,14 @@ const App = () => {
       }
     };
 
-    fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`, options)
+    let url;
+    if (searchQuery) {
+      url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(searchQuery)}&language=en-US&page=${page}`;
+    } else {
+      url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`;
+    }
+
+    fetch(url, options)
       .then(res => res.json())
       .then(data => {
         if (page === 1) {
@@ -25,15 +38,21 @@ const App = () => {
         }
       })
       .catch(err => console.error(err));
-  }, [page]); 
-
-  const loadMore = () => {
-    setPage(prevPage => prevPage + 1);
 };
 
-  return (
+  const loadMore = () => {
+  setPage(prevPage => prevPage + 1);
+  }
+
+  useEffect(() => {
+    fetchMovies();
+  }, [page, searchQuery]);
+
+return (
     <div className="App">
       <header>
+        <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search" />
+        <button onClick = {() => {setPage(1); fetchMovies(); }} >Search</button>
       </header>
       <MovieList movies = {movies} />
       <div>
@@ -42,5 +61,4 @@ const App = () => {
     </div>
   );
 }
-
 export default App;
