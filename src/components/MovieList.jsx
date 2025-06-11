@@ -13,11 +13,10 @@ const MovieList = ({ movies }) => {
                     key={movie.id}
                     imgURL={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
                     name={movie.title}
-                    rating={movie.vote_average}
+                    rating = {`Rating: ${movie.vote_average}`}
                 />
             )}
         </div>
         );
 }
-
 export default MovieList;
