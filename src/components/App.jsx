@@ -32,12 +32,14 @@ const App = () => {
     const handleSearchClick = () => {
       setIsSearchClicked(true);
       setIsNowPlayingClicked(false);
+      setPage(1);
     };
 
     const handleClearClick = () => {
       setSearchQuery('');
       setIsNowPlayingClicked(true);
       setIsSearchClicked(false);
+      setPage(1);
     };
 
 
@@ -79,8 +81,7 @@ const App = () => {
       setPage(prevPage => prevPage + 1);
     }
     const handleMovieClick = (movie) => {
-      setSelectedMovie(movie);
-      setIsModalOpen(true);
+      fetchMoreMovieInformation(movie.id)
     };
 
     useEffect(() => {
@@ -94,8 +95,28 @@ const App = () => {
       setMovies(sortedMovies);
     }, [sortOption]);
 
+    const fetchMoreMovieInformation = (id) => {
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4OGYxOGUzOGRmYTc0YzFiZjBlZjU1MGJiZjk0M2U4MCIsIm5iZiI6MTc0OTUxMTY2Mi43MzUwMDAxLCJzdWIiOiI2ODQ3NmRlZWZjNjMwMGQ3YjMzZmNiZmUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.ICuI9VPqBEqEyv2k-Wv5pPDKj0iGUGbIMFsI98cropc'
+            }
+        };
+
+        fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, options)
+            .then(res => res.json())
+            .then(data => {
+                setSelectedMovie(data);
+                setIsModalOpen(true);
+            })
+            .catch(err => console.error(err));
+    };
+    
+
+    
     return (
-    <div className="App">
+    <main className="App">
       <header>
         <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search" />
         <button onClick={handleSearchClick}> Search</button>
@@ -107,19 +128,22 @@ const App = () => {
         </select>
       </header>
       <MovieList movies={sortMovies(movies, sortOption)} onMovieClick={handleMovieClick} />
-      <div>
+      <section>
         <button onClick={loadMore}>Load More</button>
-      </div>
+      </section>
       <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
         {selectedMovie && (
-          <>
+          <article>
             <h2>{selectedMovie.title}</h2>
+            <img src={`https://image.tmdb.org/t/p/w300${selectedMovie.poster_path}`} alt={`${selectedMovie.title} poster`}/>
             <p>Release Date: {selectedMovie.release_date}</p>
+            <p>Runtime: {selectedMovie.runtime} minutes</p>
+            <p>Genres: {selectedMovie.genres.map(g => g.name).join(', ')}</p>
             <p>{selectedMovie.overview}</p>
-          </>
+          </article>
         )}
       </Modal>
-    </div>
+    </main>
   );
 }
 
