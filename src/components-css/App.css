@@ -2,6 +2,7 @@
   text-align: center;
 }
 
+
 .appArticle {
   display: flex;
   flex-direction: row;
@@ -21,7 +22,8 @@
   height: 8vh;
   width: 100vw;
   color: gold;
-  font-size: 3.5vh;
+  font-size: 3.5vw;
+  padding-top: 1vw;
 }
 
 .appButtons {
@@ -61,10 +63,28 @@
   align-content: center;
 }
 
-.modalImg {
-  height: auto;
-  width: 30%;
+.modalVisualsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
+
+.modalImg {
+  height: 22vh;
+  width: auto;
+  box-shadow: 0px 0px 3px 3px gold;
+  border-radius: 15px;
+}
+
+.modalAboutContainer {
+  display: flex;
+}
+
+.modalTextContainer {
+  display: flex;
+  align-items: center;
+}
+
 
 .modalArticle {
   width: 100%;
@@ -73,13 +93,38 @@
 }
 
 .modalTitle {
-  font-size: 2.25vw;
+  font-size: 150%;
 }
 
 .modalText {
-  font-size: 1.25vw;
+  font-size: 80%;
   word-wrap: break-word;
+  margin: 2%;
 }
+
+.modalOverview {
+  font-size: 80%;
+  word-wrap: break-word;
+  margin: 2%;
+}
+
+.trailerContainer {
+  text-align: center;
+}
+
+.trailerTitle {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.trailerIframe {
+  width: 22vw;
+  height: 22vh;
+  border-radius: 15px;
+  box-shadow: 0px 0px 2px 2px gold;
+}
+
 
 @media only screen and (max-width: 1100px) {
   .appButtons {
@@ -95,17 +140,42 @@
   }
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 600px) {
+  .modalImg {
+    height: auto;
+    width: 80%;
+  }
+
+  .modalArticle {
+    width: 100%;
+    height: auto;
+    justify-self: center;
+  }
+
+  .modalTitle {
+    font-size: 3vw;
+  }
+
+  .modalText {
+    font-size: 2vw;
+    word-wrap: break-word;
+  }
+
   .appButtons {
-      font-size: 8px;
+      font-size: 1.5vw;
   }
 
   .selectButton {
-    font-size: 8px;
+    font-size: 1.5vw;
   }
 
   .input {
-    font-size: 8px;
+    font-size: 1.5vw;
   }
 }
+
+
+
+
+
 

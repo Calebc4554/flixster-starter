@@ -21,6 +21,12 @@
     box-shadow: 0px 0px 10px 10px gold;
 }
 
+.movieContent {
+    height: 11vh;
+    width: auto;
+    align-content: center;
+}
+
 
 .movieIMG {
     width: 100%;
@@ -47,11 +53,11 @@
 .heartAndFav {
     background: none;
     border: none;
-    font-size: 25px;
+    font-size: 1.5vw;
     cursor: pointer;
     color: grey;
-    margin-right: 15px;
-    margin-left: 15px;
+    margin-right: .5vh;
+    margin-left: .5vh;
 }
 
 .favorited {
@@ -72,6 +78,15 @@
         color: gold;
     }
 
+    .movieCardContainer:hover {
+        transform: scale(1.02);
+        transition: 0.5s ease;
+        cursor: pointer;
+        background-color:rgb(53, 52, 52);
+        color: gold;
+        box-shadow: 0px 0px 5px 5px gold;
+    }
+
     .movieIMG {
         width: 100%;
         height: auto;
@@ -79,17 +94,21 @@
     }
 
     .movieName {
-        font-size: 14px;
+        font-size: 3vw;
         text-align: center;
         word-wrap: break-word;
         color: gold;
     }
     
     .movieRating {
-        font-size: 14px;
+        font-size: 2.5vw;
         text-align: center;
         word-wrap: break-word;
         color: lightgray;
+    }
+
+    .heartAndFav {
+        font-size: 3.5vw;
     }
 }
 
@@ -109,14 +128,14 @@
     }
 
     .movieName {
-        font-size: 14px;
+        font-size: 2.5vw;
         text-align: center;
         word-wrap: break-word;
         color: gold;
     }
     
     .movieRating {
-        font-size: 14px;
+        font-size: 2v;
         text-align: center;
         word-wrap: break-word;
         color: lightgray;

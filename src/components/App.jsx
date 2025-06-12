@@ -12,6 +12,7 @@ const App = () => {
     const [sortOption, setSortOption] = useState('title');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedMovie, setSelectedMovie] = useState(null);
+    const [trailerURL, setTrailerURL] = useState(null);
 
   const sortMovies = (movies, sortOption) => {
     if (sortOption === 'title') {
@@ -82,6 +83,7 @@ const App = () => {
     }
     const handleMovieClick = (movie) => {
       fetchMoreMovieInformation(movie.id)
+      fetchMovieTrailer(movie.id);
     };
 
     useEffect(() => {
@@ -112,6 +114,40 @@ const App = () => {
             })
             .catch(err => console.error(err));
     };
+
+    const fetchMovieTrailer = (id) => {
+      const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4OGYxOGUzOGRmYTc0YzFiZjBlZjU1MGJiZjk0M2U4MCIsIm5iZiI6MTc0OTUxMTY2Mi43MzUwMDAxLCJzdWIiOiI2ODQ3NmRlZWZjNjMwMGQ3YjMzZmNiZmUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.ICuI9VPqBEqEyv2k-Wv5pPDKj0iGUGbIMFsI98cropc'
+        }
+      };
+
+      fetch(`https://api.themoviedb.org/3/movie/${id}/videos`, options)
+        .then(res => res.json())
+        .then(data => {
+          const trailer = data.results.find(
+            video => video.type === "Trailer" && video.site === "YouTube"
+          );
+          if (trailer) {
+            const youtubeURL = `https://www.youtube.com/embed/${trailer.key}`;
+            setTrailerURL(youtubeURL);
+          } else {
+            setTrailerURL(null);
+            console.log("No trailer found.");
+          }
+        })
+        .catch(err => {
+          setTrailerURL(null);
+          console.error("Error fetching trailer:", err);
+        });
+    };
+
+
+
+
+
     
 
     
@@ -122,14 +158,14 @@ const App = () => {
         <h1> FLIXSTER </h1>
       </section>
           <article className = "appArticle">
-          <input className = "input" type="text" value={searchQuery} onKeyDown = {(event)=> {if (event.key === "Enter") {handleSearchClick()}}} onChange={handleSearchChange} placeholder="Search" />
-          <button className = "appButtons" onClick={handleSearchClick}> Search</button>
-          <button className = "appButtons" onClick={handleClearClick}> Clear </button>
-          <select className = "selectButton" value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
-            <option value="title">Title (alphabetic, A-Z)</option>
-            <option value="releaseDate">Release date (chronologically, most recent to oldest)</option>
-            <option value="voteAverage">Vote average (descending, highest to lowest)</option>
-          </select>
+            <input className = "input" type="text" value={searchQuery} onKeyDown = {(event)=> {if (event.key === "Enter") {handleSearchClick()}}} onChange={handleSearchChange} placeholder="Search" />
+            <button className = "appButtons" onClick={handleSearchClick}> Search</button>
+            <button className = "appButtons" onClick={handleClearClick}> Clear </button>
+            <select className = "selectButton" value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+              <option value="title">Title (alphabetic, A-Z)</option>
+              <option value="releaseDate">Release date (chronologically, most recent to oldest)</option>
+              <option value="voteAverage">Vote average (descending, highest to lowest)</option>
+            </select>
         </article>
       </header>
       <MovieList movies={sortMovies(movies, sortOption)} onMovieClick={handleMovieClick} />
@@ -137,11 +173,26 @@ const App = () => {
         {selectedMovie && (
           <article className = "modalArticle">
             <h2 className = "modalTitle" >{selectedMovie.title}</h2>
-            <img className = "modalImg" src={`https://image.tmdb.org/t/p/w300${selectedMovie.poster_path}`} alt={`${selectedMovie.title} poster`}/>
-            <p className = "modalText" >Release Date: {selectedMovie.release_date}</p>
-            <p className = "modalText">Runtime: {selectedMovie.runtime} minutes</p>
-            <p className = "modalText">Genres: {selectedMovie.genres.map(g => g.name).join(', ')}</p>
-            <p className = "modalText" >{selectedMovie.overview}</p>
+            <div className = "modalVisualsContainer">
+              <img className = "modalImg" src={`https://image.tmdb.org/t/p/w300${selectedMovie.poster_path}`} alt={`${selectedMovie.title} poster`}/>
+              <div className="trailerContainer">
+                      <iframe className="trailerIframe" src={trailerURL} title="YouTube trailer" allowFullScreen> </iframe>
+              </div>
+            </div>
+            <div className = "modalTextContainer">
+
+              <div className = "modalAboutContainer">
+                <p className = "modalText" >Release Date: {selectedMovie.release_date}</p>
+                <p className = "modalText">Runtime: {selectedMovie.runtime} minutes</p>
+                <p className = "modalText">Genres: {selectedMovie.genres.map(g => g.name).join(', ')}</p>
+              </div>
+              
+              <div>
+                <p className = "modalOverview" >{selectedMovie.overview}</p>
+              </div>
+
+            </div>
+
           </article>
         )}
       </Modal>

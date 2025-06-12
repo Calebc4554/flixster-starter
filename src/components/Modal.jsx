@@ -8,12 +8,10 @@ import '../components-css/Modal.css';
 
     return (
         <div className="modal-overlay">
-        <div className="modal-content">
-            <button className="modal-close" onClick={onClose}>
-            &times;
-            </button>
-            {children}
-        </div>
+            <div className="modal-content">
+                <button className="modal-close" onClick={onClose}>&times;</button>
+                {children}
+            </div>
         </div>
     );
 };
