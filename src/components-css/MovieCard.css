@@ -1,11 +1,14 @@
 .movieCardContainer {
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 0px 3px 3px rgb(208, 208, 208);
+    box-shadow: 0px 0px 3px 3px gold;
+    border: #212121;
     margin: 20px;
     border-radius: 10px;
     width: 12%;
     height: auto;
+    background-color: #212121;
+    color: gold;
 }
 
 
@@ -26,7 +29,7 @@
 
 .movieRating {
     font-size: .75vw;
-    color: grey;
+    color: lightgrey;
     margin: 2px;
     word-wrap: break-word;
 }
@@ -36,6 +39,8 @@
         width: 45%;
         height: auto;
         margin: 10px;
+        background-color: #212121;
+        color: gold;
     }
 
     .movieIMG {
@@ -44,10 +49,18 @@
         border-radius: 10px 10px 0px 0px;
     }
 
-    .movieName, .movieRating {
+    .movieName {
         font-size: 14px;
         text-align: center;
         word-wrap: break-word;
+        color: gold;
+    }
+    
+    .movieRating {
+        font-size: 14px;
+        text-align: center;
+        word-wrap: break-word;
+        color: lightgray;
     }
 }
 
@@ -56,6 +69,8 @@
         width: 25%;
         height: auto;
         margin: 10px;
+        background-color: #212121;
+        color: gold;
     }
 
     .movieIMG {
@@ -64,8 +79,17 @@
         border-radius: 10px 10px 0px 0px;
     }
 
-    .movieName, .movieRating {
+    .movieName {
+        font-size: 14px;
         text-align: center;
         word-wrap: break-word;
+        color: gold;
+    }
+    
+    .movieRating {
+        font-size: 14px;
+        text-align: center;
+        word-wrap: break-word;
+        color: lightgray;
     }
 }

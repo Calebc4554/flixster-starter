@@ -2,27 +2,98 @@
   text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
+.appHeader {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  background-color: #212121;
+  height: 8vh;
+  width: 100vw;
+}
+
+.appButtons {
+    background-color: #212121;
+    color: gold;
+    height: 40%;
+    width: 11%;
+    margin: 1%;
+    font-size: 20px;
+}
+
+.selectButton {
+  background-color: #212121;
+  color: gold;
+  height: 40%;
+  width: 20%;
+  margin: 1%;
+  font-size: 19px;
+}
+
+.input {
+  height: 30%;
+  width: 25%;
+  background-color: grey;
   color: white;
-  padding: 20px;
+  font-size: 20px;
 }
 
-@media (max-width: 600px) {
-  .movie-card {
-    width: 100%;
+.input::placeholder {  
+  color: white;
+}
+
+.appFooter {
+  height: 8vh;
+  width: 100vw;
+  background-color: #212121;
+  align-content: center;
+}
+
+.modalImg {
+  height: auto;
+  width: 30%;
+}
+
+.modalArticle {
+  width: 100%;
+  height: auto;
+  justify-self: center;
+}
+
+.modalTitle {
+  font-size: 2.25vw;
+}
+
+.modalText {
+  font-size: 1.25vw;
+  word-wrap: break-word;
+}
+
+@media only screen and (max-width: 1100px) {
+  .appButtons {
+      font-size: 15px;
   }
 
-  .search-bar {
-    flex-direction: column;
-    gap: 10px;
+  .selectButton {
+    font-size: 15px;
   }
 
-  .search-bar form {
-    flex-direction: column;
+  .input {
+    font-size: 15px;
   }
 }
+
+@media only screen and (max-width: 650px) {
+  .appButtons {
+      font-size: 8px;
+  }
+
+  .selectButton {
+    font-size: 8px;
+  }
+
+  .input {
+    font-size: 8px;
+  }
+}
+

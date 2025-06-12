@@ -117,32 +117,34 @@ const App = () => {
     
     return (
     <main className="App">
-      <header>
-        <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search" />
-        <button onClick={handleSearchClick}> Search</button>
-        <button onClick={handleClearClick}> Clear </button>
-        <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+      <header className = "appHeader">
+        <input className = "input" type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search" />
+        <button className = "appButtons" onClick={handleSearchClick}> Search</button>
+        <button className = "appButtons" onClick={handleClearClick}> Clear </button>
+        <select className = "selectButton" value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
           <option value="title">Title (alphabetic, A-Z)</option>
           <option value="releaseDate">Release date (chronologically, most recent to oldest)</option>
           <option value="voteAverage">Vote average (descending, highest to lowest)</option>
         </select>
       </header>
       <MovieList movies={sortMovies(movies, sortOption)} onMovieClick={handleMovieClick} />
-      <section>
-        <button onClick={loadMore}>Load More</button>
-      </section>
       <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
         {selectedMovie && (
-          <article>
-            <h2>{selectedMovie.title}</h2>
-            <img src={`https://image.tmdb.org/t/p/w300${selectedMovie.poster_path}`} alt={`${selectedMovie.title} poster`}/>
-            <p>Release Date: {selectedMovie.release_date}</p>
-            <p>Runtime: {selectedMovie.runtime} minutes</p>
-            <p>Genres: {selectedMovie.genres.map(g => g.name).join(', ')}</p>
-            <p>{selectedMovie.overview}</p>
+          <article className = "modalArticle">
+            <h2 className = "modalTitle" >{selectedMovie.title}</h2>
+            <img className = "modalImg" src={`https://image.tmdb.org/t/p/w300${selectedMovie.poster_path}`} alt={`${selectedMovie.title} poster`}/>
+            <p className = "modalText" >Release Date: {selectedMovie.release_date}</p>
+            <p className = "modalText">Runtime: {selectedMovie.runtime} minutes</p>
+            <p className = "modalText">Genres: {selectedMovie.genres.map(g => g.name).join(', ')}</p>
+            <p className = "modalText">{selectedMovie.overview}</p>
           </article>
         )}
       </Modal>
+      <footer className = "appFooter" >
+        <section>
+          <button className = "appButtons" onClick={loadMore}>Load More</button>
+        </section>
+      </footer>
     </main>
   );
 }
