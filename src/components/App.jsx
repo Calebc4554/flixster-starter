@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import '../components-css/App.css';
 import MovieList from './MovieList';
+import Modal from './Modal';
 
-  const App = () => {
+const App = () => {
     const [movies, setMovies] = useState([]); 
     const [page, setPage] = useState(1); 
     const [searchQuery, setSearchQuery] = useState('');
     const [isSearchClicked, setIsSearchClicked] = useState(false);
     const [isNowPlayingClicked, setIsNowPlayingClicked] = useState(true);
     const [sortOption, setSortOption] = useState('title');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedMovie, setSelectedMovie] = useState(null);
 
   const sortMovies = (movies, sortOption) => {
     if (sortOption === 'title') {
@@ -57,6 +60,7 @@ import MovieList from './MovieList';
       fetch(url, options)
         .then(res => res.json())
         .then(data => {
+          console.log(data)
           if (page === 1) {
             setMovies(data.results);
           } else {
@@ -70,9 +74,14 @@ import MovieList from './MovieList';
         });
     };
 
+
     const loadMore = () => {
       setPage(prevPage => prevPage + 1);
     }
+    const handleMovieClick = (movie) => {
+      setSelectedMovie(movie);
+      setIsModalOpen(true);
+    };
 
     useEffect(() => {
       if (isSearchClicked || isNowPlayingClicked || page > 1) {
@@ -97,10 +106,19 @@ import MovieList from './MovieList';
           <option value="voteAverage">Vote average (descending, highest to lowest)</option>
         </select>
       </header>
-      <MovieList movies={sortMovies(movies, sortOption)} />
+      <MovieList movies={sortMovies(movies, sortOption)} onMovieClick={handleMovieClick} />
       <div>
         <button onClick={loadMore}>Load More</button>
       </div>
+      <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        {selectedMovie && (
+          <>
+            <h2>{selectedMovie.title}</h2>
+            <p>Release Date: {selectedMovie.release_date}</p>
+            <p>{selectedMovie.overview}</p>
+          </>
+        )}
+      </Modal>
     </div>
   );
 }
