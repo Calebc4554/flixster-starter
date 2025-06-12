@@ -117,15 +117,20 @@ const App = () => {
     
     return (
     <main className="App">
-      <header className = "appHeader">
-        <input className = "input" type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search" />
-        <button className = "appButtons" onClick={handleSearchClick}> Search</button>
-        <button className = "appButtons" onClick={handleClearClick}> Clear </button>
-        <select className = "selectButton" value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
-          <option value="title">Title (alphabetic, A-Z)</option>
-          <option value="releaseDate">Release date (chronologically, most recent to oldest)</option>
-          <option value="voteAverage">Vote average (descending, highest to lowest)</option>
-        </select>
+    <header>
+      <section className = "titleSection">
+        <h1> FLIXSTER </h1>
+      </section>
+          <article className = "appArticle">
+          <input className = "input" type="text" value={searchQuery} onKeyDown = {(event)=> {if (event.key === "Enter") {handleSearchClick()}}} onChange={handleSearchChange} placeholder="Search" />
+          <button className = "appButtons" onClick={handleSearchClick}> Search</button>
+          <button className = "appButtons" onClick={handleClearClick}> Clear </button>
+          <select className = "selectButton" value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+            <option value="title">Title (alphabetic, A-Z)</option>
+            <option value="releaseDate">Release date (chronologically, most recent to oldest)</option>
+            <option value="voteAverage">Vote average (descending, highest to lowest)</option>
+          </select>
+        </article>
       </header>
       <MovieList movies={sortMovies(movies, sortOption)} onMovieClick={handleMovieClick} />
       <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
@@ -136,7 +141,7 @@ const App = () => {
             <p className = "modalText" >Release Date: {selectedMovie.release_date}</p>
             <p className = "modalText">Runtime: {selectedMovie.runtime} minutes</p>
             <p className = "modalText">Genres: {selectedMovie.genres.map(g => g.name).join(', ')}</p>
-            <p className = "modalText">{selectedMovie.overview}</p>
+            <p className = "modalText" >{selectedMovie.overview}</p>
           </article>
         )}
       </Modal>

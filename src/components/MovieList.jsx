@@ -15,6 +15,7 @@ const MovieList = ({ movies, onMovieClick }) => {
                     name={movie.title}
                     rating = {`Rating: ${movie.vote_average}`}
                     onClick={() => onMovieClick(movie)}
+                    alt={`${movie.title} poster`}  
                 />
             )}
         </div>
