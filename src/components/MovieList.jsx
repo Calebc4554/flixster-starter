@@ -17,7 +17,7 @@ const MovieList = ({ movies, onMovieClick }) => {
                     onClick={() => onMovieClick(movie)}
                     alt={`${movie.title} poster`}  
                 />
-            )};
+            )}
         </div>
     );
 };
