@@ -10,7 +10,7 @@
     align-items: center;
     z-index: 1000;
     overflow: auto;
-    }
+}
 
 .modal-content {
     background-color: #212121;
@@ -25,7 +25,7 @@
     color: #FFB800;;
     font-size: 1.5vh;
     box-sizing: border-box;
-    }
+}
 
 .modal-close {
     position: absolute;
@@ -36,7 +36,7 @@
     cursor: pointer;
     background: transparent;
     color: #FFB800;;
-    }
+}
 
 @media only screen and (max-width: 600px) {
 .modal-content {
@@ -46,4 +46,4 @@
         font-size: 4vw;
         padding: 15px;
     }
-    }
+}

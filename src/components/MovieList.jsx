@@ -19,6 +19,6 @@ const MovieList = ({ movies, onMovieClick }) => {
                 />
             )}
         </div>
-        );
+    );
 }
 export default MovieList;

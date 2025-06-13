@@ -27,7 +27,6 @@
     align-content: center;
 }
 
-
 .movieIMG {
     width: 100%;
     height: auto;
@@ -56,8 +55,8 @@
     font-size: 1.5vw;
     cursor: pointer;
     color: grey;
-    margin-right: .5vh;
-    margin-left: .5vh;
+    margin-right: .2vh;
+    margin-left: .2vh;
 }
 
 .favorited {

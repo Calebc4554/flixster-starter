@@ -1,7 +1,7 @@
 import React from 'react';
 import '../components-css/Modal.css'; 
 
-    const Modal = ({ show, onClose, children }) => {
+const Modal = ({ show, onClose, children }) => {
     if (!show) {
         return null;
     }
@@ -15,5 +15,4 @@ import '../components-css/Modal.css';
         </div>
     );
 };
-
 export default Modal;
