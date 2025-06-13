@@ -78,7 +78,6 @@
     color: lightskyblue;
 }
 
-
 @media only screen and (max-width: 600px) {
     .movieCardContainer {
         width: 45%;

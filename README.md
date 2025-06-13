@@ -1,5 +1,10 @@
 ## Unit Assignment: Flixster
 
+# TLDR
+Flixster is a movie browser web app that lets users view, search, and sort movies using the TMDB API.
+Key features include a responsive design, pop-up modals with movie details, and favorite/watched toggles.
+Deployed via Render, with a walkthrough video and stretch features like embedded trailers.
+
 Submitted by: Caleb Calderon
 
 Estimated time spent: 30 hours 
@@ -79,7 +84,7 @@ Deployed Application: [Flixster Deployed Site](https://flixster-starter-d4oq.onr
   - [X] If the movie is already favorited:
     - [X] Clicking on the visual element should mark the movie as *not* favorited.
     - [X] There should be visual feedback (such as the heart turning a different color) to show that the movie has been unfavorited. 
-- [ ] **Watched Checkbox**
+- [X] **Watched Checkbox**
   - [X] For each movie displayed, users can mark the movie as watched.
   - [X] There should be visual element (such as an eye icon) on each movie's tile to show whether or not the movie has been watched.
   - [X] If the movie has not been watched:
@@ -106,11 +111,11 @@ Deployed Application: [Flixster Deployed Site](https://flixster-starter-d4oq.onr
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-I think that the Labs prepared me well to complete in the assignment, in specific I think that the fetching of API's was well taught but I think that they could have explained better when to use useEffect and useState as that was something that I really struggled with in the beggining.
+I think that the Labs prepared me well to complete the assignment, in specific I think that the fetching of API's was well taught but I think that they could have explained better when to use useEffect and useState as that was something that I really struggled with in the beggining.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-I think if I had more time I would add an option within the sort to not sort by anything and go back to how the movies are regularly displayed as sometimes it can get confusing when searching and I would also add the side bar stretch feature but I didnt have enough time to implement that.
+I think if I had more time I would add an option within the sort button to not sort by anything and go back to how the movies are regularly displayed as sometimes it can get confusing when searching and I would also add the side bar stretch feature but I didnt have enough time to implement that.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 

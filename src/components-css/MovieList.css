@@ -3,7 +3,8 @@
     flex-wrap: wrap;
     justify-content: center;
     border: 10px;
-    background-color: darkgrey;
+    /* Dark Grey */
+    background-color: #595959;
     height: auto;
 }
 

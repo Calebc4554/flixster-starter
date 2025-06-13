@@ -30,34 +30,36 @@ const App = () => {
     setSearchQuery(event.target.value);
   };
 
+  const resetToFirstPage = () => setPage(1);
+
   const handleSearchClick = () => {
     setIsSearchClicked(true);
     setIsNowPlayingClicked(false);
-    setPage(1);
+    resetToFirstPage();
   };
 
   const handleClearClick = () => {
     setSearchQuery('');
     setIsNowPlayingClicked(true);
     setIsSearchClicked(false);
-    setPage(1);
+    resetToFirstPage();
   };
 
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4OGYxOGUzOGRmYTc0YzFiZjBlZjU1MGJiZjk0M2U4MCIsIm5iZiI6MTc0OTUxMTY2Mi43MzUwMDAxLCJzdWIiOiI2ODQ3NmRlZWZjNjMwMGQ3YjMzZmNiZmUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.ICuI9VPqBEqEyv2k-Wv5pPDKj0iGUGbIMFsI98cropc'
+    }
+  };
+  
   const fetchMovies = () => {
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4OGYxOGUzOGRmYTc0YzFiZjBlZjU1MGJiZjk0M2U4MCIsIm5iZiI6MTc0OTUxMTY2Mi43MzUwMDAxLCJzdWIiOiI2ODQ3NmRlZWZjNjMwMGQ3YjMzZmNiZmUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.ICuI9VPqBEqEyv2k-Wv5pPDKj0iGUGbIMFsI98cropc'
-      }
-    };
-
     let url;
     if (isSearchClicked) {
       url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(searchQuery)}&language=en-US&page=${page}`;
     } else {
       url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`;
-    };
+    }
 
     fetch(url, options)
       .then(res => res.json())
@@ -66,9 +68,8 @@ const App = () => {
           setMovies(data.results);
         } else {
           setMovies(prevMovies => [...prevMovies, ...data.results]);
-        };
+        }
     })
-
       .catch(err => console.error(err))
       .finally(() => {
         setIsSearchClicked(false);
@@ -79,14 +80,14 @@ const App = () => {
     setPage(prevPage => prevPage + 1);
   };
   const handleMovieClick = (movie) => {
-    fetchMoreMovieInformation(movie.id)
+    fetchMoreMovieInformation(movie.id);
     fetchMovieTrailer(movie.id);
   };
 
   useEffect(() => {
     if (isSearchClicked || isNowPlayingClicked || page > 1) {
       fetchMovies();
-    };
+    }
   }, [page, isSearchClicked, isNowPlayingClicked]);
 
   useEffect(() => {
@@ -95,14 +96,6 @@ const App = () => {
   }, [sortOption]);
 
   const fetchMoreMovieInformation = (id) => {
-      const options = {
-          method: 'GET',
-          headers: {
-              accept: 'application/json',
-              Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4OGYxOGUzOGRmYTc0YzFiZjBlZjU1MGJiZjk0M2U4MCIsIm5iZiI6MTc0OTUxMTY2Mi43MzUwMDAxLCJzdWIiOiI2ODQ3NmRlZWZjNjMwMGQ3YjMzZmNiZmUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.ICuI9VPqBEqEyv2k-Wv5pPDKj0iGUGbIMFsI98cropc'
-          }
-      };
-
         fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, options)
           .then(res => res.json())
           .then(data => {
@@ -113,26 +106,18 @@ const App = () => {
   };
 
   const fetchMovieTrailer = (id) => {
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4OGYxOGUzOGRmYTc0YzFiZjBlZjU1MGJiZjk0M2U4MCIsIm5iZiI6MTc0OTUxMTY2Mi43MzUwMDAxLCJzdWIiOiI2ODQ3NmRlZWZjNjMwMGQ3YjMzZmNiZmUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.ICuI9VPqBEqEyv2k-Wv5pPDKj0iGUGbIMFsI98cropc'
-      }
-    };
-
     fetch(`https://api.themoviedb.org/3/movie/${id}/videos`, options)
       .then(res => res.json())
       .then(data => {
         const trailer = data.results.find(
           video => video.type === 'Trailer' && video.site === 'YouTube'
-        );
+        )
         if (trailer) {
           const youtubeURL = `https://www.youtube.com/embed/${trailer.key}`;
           setTrailerURL(youtubeURL);
         } else {
           setTrailerURL(null);
-        };
+        }
       })
       .catch(err => {
         setTrailerURL(null);
@@ -154,7 +139,7 @@ const App = () => {
             onKeyDown={(event) => {
               if (event.key === 'Enter') {
                 handleSearchClick();
-              };
+              }
             }}
             onChange={handleSearchChange}
             placeholder='Search'
@@ -218,5 +203,10 @@ const App = () => {
     </main>
   );
 };
+
+// TODO: Implement a Sidebar with navigation links to Home, Favorites, and Watched pages.
+// - Home page: shows all movies in a grid, with search and sort options.
+// - Favorites page: shows only favorited movies in a grid view.
+// - Watched page: shows only watched movies in a grid view.
 
 export default App;
