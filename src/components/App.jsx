@@ -56,8 +56,10 @@ const App = () => {
   const fetchMovies = () => {
     let url;
     if (isSearchClicked) {
+      // Use search endpoint if the user has initiated a search
       url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(searchQuery)}&language=en-US&page=${page}`;
     } else {
+      // Otherwise, fetch currently playing movies
       url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`;
     }
 
@@ -65,13 +67,16 @@ const App = () => {
       .then(res => res.json())
       .then(data => {
         if (page === 1) {
+          // On first page, replace existing movie list
           setMovies(data.results);
         } else {
+          // On subsequent pages, append new movies to existing list
           setMovies(prevMovies => [...prevMovies, ...data.results]);
         }
     })
       .catch(err => console.error(err))
       .finally(() => {
+        // Reset search flag after fetch completes
         setIsSearchClicked(false);
       });
   };
@@ -109,6 +114,7 @@ const App = () => {
     fetch(`https://api.themoviedb.org/3/movie/${id}/videos`, options)
       .then(res => res.json())
       .then(data => {
+        // Find the first trailer from YouTube
         const trailer = data.results.find(
           video => video.type === 'Trailer' && video.site === 'YouTube'
         )
@@ -116,6 +122,7 @@ const App = () => {
           const youtubeURL = `https://www.youtube.com/embed/${trailer.key}`;
           setTrailerURL(youtubeURL);
         } else {
+          // If no trailer is found, reset trailer URL
           setTrailerURL(null);
         }
       })
