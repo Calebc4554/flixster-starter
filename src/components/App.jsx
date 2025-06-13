@@ -151,8 +151,8 @@ const App = () => {
             onChange={handleSearchChange}
             placeholder='Search'
           />
-          <button type="button" className='appButtons' onClick={handleSearchClick}> Search</button>
-          <button type="button" className='appButtons' onClick={handleClearClick}> Clear </button>
+          <button type='button' className='appButtons' onClick={handleSearchClick}> Search</button>
+          <button type='button' className='appButtons' onClick={handleClearClick}> Clear </button>
           <select
             className='selectButton'
             value={sortOption}
@@ -204,7 +204,7 @@ const App = () => {
 
       <footer className='appFooter'>
         <section>
-          <button type="button" className='appButtons' onClick={loadMore}>Load More</button>
+          <button type='button' className='appButtons' onClick={loadMore}>Load More</button>
         </section>
       </footer>
     </main>
