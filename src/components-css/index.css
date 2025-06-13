@@ -1,11 +1,13 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  /* Washed White */
   background-color: #f4f4f4;
 }
 
 button {
   background-color: #282c34;
+  /* Dark Grey */
   color: white;
   cursor: pointer;
   font-size: 16px;
@@ -14,6 +16,7 @@ button {
 }
 
 button:hover {
+  /* Light Grey */
   background-color: #777;
   color: white;
 }

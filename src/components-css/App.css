@@ -7,6 +7,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  /* Dark Grey */
   background-color: #212121;
   height: 8vh;
   width: 100vw;
@@ -17,16 +18,20 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  /* Dark Grey */
   background-color: #212121;
   height: 8vh;
   width: 100vw;
+  /* Dark Gold */
   color: #FFB800;
   font-size: 3.5vw;
   padding-top: 1vw;
 }
 
 .appButtons {
+  /* Dark Grey */
   background-color: #212121;
+  /* Dark Gold */
   color: #FFB800;
   height: 40%;
   width: 11%;
@@ -37,6 +42,7 @@
 
 .selectButton {
   background-color: #212121;
+  /* Dark Gold */
   color: #FFB800;
   height: 40%;
   width: 20%;
@@ -60,6 +66,7 @@
 .appFooter {
   height: 8vh;
   width: 100vw;
+  /* Dark Grey */
   background-color: #212121;
   align-content: center;
 }
@@ -76,6 +83,7 @@
   height: 22vh;
   width: auto;
   max-width: 90vw;
+  /* Dark Gold */
   box-shadow: 0px 0px 3px 3px #FFB800;
   border-radius: 15px;
 }
@@ -89,6 +97,7 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   border-radius: 15px;
+  /* Dark Gold */
   box-shadow: 0px 0px 2px 2px #FFB800;
   border: none;
 }
@@ -112,6 +121,7 @@
   max-width: 700px;
   max-height: 90vh;
   overflow-y: auto;
+  /* Dark Grey */
   background-color: #1a1a1a;
   border-radius: 10px;
   padding: 20px;
@@ -121,6 +131,7 @@
 
 .modalTitle {
   font-size: 1.8rem;
+  /* Dark Gold */
   color: #FFB800;
   text-align: center;
   margin-bottom: 15px;

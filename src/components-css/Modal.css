@@ -4,7 +4,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    /* Dark Grey */
+    background-color: #212121;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,6 +14,7 @@
 }
 
 .modalContent {
+    /* Dark Grey */
     background-color: #212121;
     padding: 20px;
     border-radius: 5px;
@@ -20,8 +22,10 @@
     max-width: 700px;
     max-height: 90vh;
     overflow-y: auto;
+    /* Dark Gold */
     box-shadow: 0px 0px 5px 5px #FFB800;;
     position: relative;
+    /* Dark Gold */
     color: #FFB800;;
     font-size: 1.5vh;
     box-sizing: border-box;
@@ -35,6 +39,7 @@
     font-size: 1.5rem;
     cursor: pointer;
     background: transparent;
+    /* Dark Gold */
     color: #FFB800;;
 }
 

@@ -1,13 +1,17 @@
 .movieCardContainer {
     display: flex;
     flex-direction: column;
+    /* Dark Gold */
     box-shadow: 0px 0px 3px 3px #FFB800;
+    /* Dark Grey */
     border: #212121;
     margin: 20px;
     border-radius: 10px;
     width: 12%;
     height: auto;
+    /* Dark Grey */
     background-color: #212121;
+    /* Dark Gold */
     color: #FFB800;
     height: 100%;
 }
@@ -17,7 +21,9 @@
     transition: 0.5s ease;
     cursor: pointer;
     background-color:rgb(53, 52, 52);
+    /* Dark Gold */
     color: #FFB800;
+    /* Dark Gold */
     box-shadow: 0px 0px 10px 10px #FFB800;
 }
 
@@ -64,6 +70,7 @@
 }
 
 .bookmarked {
+    /* Dark Gold */
     color: #FFB800;
 }
 
@@ -77,7 +84,9 @@
         width: 45%;
         height: auto;
         margin: 10px;
+        /* Dark Grey */
         background-color: #212121;
+        /* Dark Gold */
         color: #FFB800;
     }
 
@@ -85,8 +94,11 @@
         transform: scale(1.02);
         transition: 0.5s ease;
         cursor: pointer;
-        background-color:rgb(53, 52, 52);
+        /* Dark Grey */
+        background-color:#212121;
+        /* Dark Gold */
         color: #FFB800;
+        /* Dark Gold */
         box-shadow: 0px 0px 5px 5px #FFB800;
     }
 
@@ -100,6 +112,7 @@
         font-size: 3vw;
         text-align: center;
         word-wrap: break-word;
+        /* Dark Gold */
         color: #FFB800;
     }
     
@@ -120,7 +133,9 @@
         width: 25%;
         height: auto;
         margin: 10px;
+        /* Dark Grey */
         background-color: #212121;
+        /* Dark Gold */
         color: #FFB800;
     }
 
@@ -134,6 +149,7 @@
         font-size: 2.5vw;
         text-align: center;
         word-wrap: break-word;
+        /* Dark Gold */
         color: #FFB800;
     }
     
