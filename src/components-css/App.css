@@ -32,6 +32,7 @@
   width: 11%;
   margin: 1%;
   font-size: 20px;
+  border-radius: 10px; 
 }
 
 .selectButton {
@@ -41,6 +42,7 @@
   width: 20%;
   margin: 1%;
   font-size: 19px;
+  border-radius: 10px;
 }
 
 .input {
@@ -179,10 +181,12 @@
 
   .appButtons {
     font-size: 1.5vw;
+    border-radius: 5px;
   }
 
   .selectButton {
     font-size: 1.5vw;
+    border-radius: 5px;
   }
 
   .input {
