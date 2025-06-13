@@ -27,7 +27,7 @@
     box-shadow: 0px 0px 10px 10px #FFB800;
 }
 
-.movieContent {
+.movieContentContainer {
     height: 11vh;
     width: auto;
     align-content: center;
@@ -54,7 +54,7 @@
     word-wrap: break-word;
 }
 
-.heartFavWatched {
+.heartFavWatchedButtons {
     background: none;
     border: none;
     font-size: 1.5vw;
@@ -121,7 +121,7 @@
         color: lightgray;
     }
 
-    .heartFavWatched {
+    .heartFavWatchedButtons {
         font-size: 3.5vw;
     }
 }

@@ -24,19 +24,19 @@ const MovieCard = ({ imgURL, name, rating, onClick }) => {
     return (
     <article className='movieCardContainer' onClick={onClick}>
         <img className='movieIMG' src={imgURL} alt={name} />
-        <section className='movieContent'>
+        <section className='movieContentContainer'>
             <div>
                 <h2 className='movieName'>{name}</h2>
                 <p className='movieRating'>{rating}</p>
             </div>
             <div>
-                <button type='button' className='heartFavWatched' onClick={handleFavoriteClick}>
+                <button type='button' className='heartFavWatchedButtons' onClick={handleFavoriteClick}>
                     <i className={isFavorited ? 'fas fa-heart favorited' : 'far fa-heart'}></i>
                 </button>
-                <button type='button' className='heartFavWatched' onClick={handleBookmarkClick}>
+                <button type='button' className='heartFavWatchedButtons' onClick={handleBookmarkClick}>
                     <i className={isBookmarked ? 'fas fa-bookmark bookmarked' : 'far fa-bookmark'}></i>
                 </button>
-                <button type='button' className='heartFavWatched' onClick={handleWatchedClick}>
+                <button type='button' className='heartFavWatchedButtons' onClick={handleWatchedClick}>
                     <i className={isWatched ? 'fas fa-eye watched' : 'fas fa-eye-slash'}></i>
                 </button>
             </div>
