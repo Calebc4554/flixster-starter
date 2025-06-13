@@ -2,7 +2,7 @@
 
 Submitted by: Caleb Calderon
 
-Estimated time spent: 30 hours spent in total
+Estimated time spent: 30 hours 
 
 Deployed Application: [Flixster Deployed Site](https://flixster-starter-d4oq.onrender.com/)
 
@@ -100,21 +100,21 @@ Deployed Application: [Flixster Deployed Site](https://flixster-starter-d4oq.onr
 
 ### Walkthrough Video
 
-`ADD_EMBEDDED_CODE_HERE`
+`https://www.loom.com/share/728070da763c4b5cb1ffa17e25804f8b?sid=e49196ae-19b8-4c02-bcba-366c222440b9`
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+I think that the Labs prepared me well to complete in the assignment, in specific I think that the fetching of API's was well taught but I think that they could have explained better when to use useEffect and useState as that was something that I really struggled with in the beggining.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+I think if I had more time I would add an option within the sort to not sort by anything and go back to how the movies are regularly displayed as sometimes it can get confusing when searching and I would also add the side bar stretch feature but I didnt have enough time to implement that.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I think that my project demo went well because I implemented the feedback that my manager gave me like making the video shorter and adding audio, the only thing that didnt go as planned is that some wind noise came into the mic. Something that my peer implemented was interactivity with the side bar so I would implement that in my project in the demo next time if I did this project again. 
 
 ### Open-source libraries used
 
