@@ -5,11 +5,10 @@ const Modal = ({ show, onClose, children }) => {
     if (!show) {
         return null;
     }
-
     return (
-        <div className="modal-overlay">
-            <div className="modal-content">
-                <button className="modal-close" onClick={onClose}>&times;</button>
+        <div className='modalOverlay'>
+            <div className='modalContent'>
+                <button className='modalClose' onClick={onClose}>&times;</button>
                 {children}
             </div>
         </div>

@@ -49,7 +49,7 @@
     word-wrap: break-word;
 }
 
-.heartAndFav {
+.heartFavWatched {
     background: none;
     border: none;
     font-size: 1.5vw;
@@ -110,7 +110,7 @@
         color: lightgray;
     }
 
-    .heartAndFav {
+    .heartFavWatched {
         font-size: 3.5vw;
     }
 }

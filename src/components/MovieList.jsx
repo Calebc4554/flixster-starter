@@ -4,10 +4,10 @@ import MovieCard from './MovieCard';
 
 const MovieList = ({ movies, onMovieClick }) => {
     if (!movies || movies.length === 0) {
-    return <p>Loading movies...</p>;
-    }
+    return <p>Loading movies...</p>
+    };
     return (
-        <div className="movieContainer">
+        <div className='movieContainer'>
             {movies.map(movie => 
                 <MovieCard
                     key={movie.id}
@@ -17,8 +17,8 @@ const MovieList = ({ movies, onMovieClick }) => {
                     onClick={() => onMovieClick(movie)}
                     alt={`${movie.title} poster`}  
                 />
-            )}
+            )};
         </div>
     );
-}
+};
 export default MovieList;

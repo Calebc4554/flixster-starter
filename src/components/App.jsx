@@ -58,18 +58,17 @@ const App = () => {
       url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(searchQuery)}&language=en-US&page=${page}`;
     } else {
       url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`;
-    }
+    };
 
     fetch(url, options)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         if (page === 1) {
           setMovies(data.results);
         } else {
           setMovies(prevMovies => [...prevMovies, ...data.results]);
-        }
-      })
+        };
+    })
 
       .catch(err => console.error(err))
       .finally(() => {
@@ -80,7 +79,7 @@ const App = () => {
 
   const loadMore = () => {
     setPage(prevPage => prevPage + 1);
-  }
+  };
   const handleMovieClick = (movie) => {
     fetchMoreMovieInformation(movie.id)
     fetchMovieTrailer(movie.id);
@@ -89,7 +88,7 @@ const App = () => {
   useEffect(() => {
     if (isSearchClicked || isNowPlayingClicked || page > 1) {
       fetchMovies();
-    }
+    };
   }, [page, isSearchClicked, isNowPlayingClicked]);
 
   useEffect(() => {
@@ -128,51 +127,50 @@ const App = () => {
       .then(res => res.json())
       .then(data => {
         const trailer = data.results.find(
-          video => video.type === "Trailer" && video.site === "YouTube"
+          video => video.type === 'Trailer' && video.site === 'YouTube'
         );
         if (trailer) {
           const youtubeURL = `https://www.youtube.com/embed/${trailer.key}`;
           setTrailerURL(youtubeURL);
         } else {
           setTrailerURL(null);
-          console.log("No trailer found.");
-        }
+        };
       })
       .catch(err => {
         setTrailerURL(null);
-        console.error("Error fetching trailer:", err);
+        console.error('Error fetching trailer:', err);
       });
   };
 
   return (
-    <main className="App">
+    <main className='App'>
       <header>
-        <section className="titleSection">
+        <section className='titleSection'>
           <h1> FLIXSTER </h1>
         </section>
-        <section className="appArticle">
+        <section className='appArticle'>
           <input
-            className="input"
-            type="text"
+            className='input'
+            type='text'
             value={searchQuery}
             onKeyDown={(event) => {
-              if (event.key === "Enter") {
+              if (event.key === 'Enter') {
                 handleSearchClick();
-              }
+              };
             }}
             onChange={handleSearchChange}
-            placeholder="Search"
+            placeholder='Search'
           />
-          <button className="appButtons" onClick={handleSearchClick}> Search</button>
-          <button className="appButtons" onClick={handleClearClick}> Clear </button>
+          <button className='appButtons' onClick={handleSearchClick}> Search</button>
+          <button className='appButtons' onClick={handleClearClick}> Clear </button>
           <select
-            className="selectButton"
+            className='selectButton'
             value={sortOption}
             onChange={(e) => setSortOption(e.target.value)}
           >
-            <option value="title">Title (alphabetic, A-Z)</option>
-            <option value="releaseDate">Release date (chronologically, most recent to oldest)</option>
-            <option value="voteAverage">Vote average (descending, highest to lowest)</option>
+            <option value='title'>Title (alphabetic, A-Z)</option>
+            <option value='releaseDate'>Release date (chronologically, most recent to oldest)</option>
+            <option value='voteAverage'>Vote average (descending, highest to lowest)</option>
           </select>
         </section>
       </header>
@@ -181,46 +179,46 @@ const App = () => {
       </section>
       <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
         {selectedMovie && (
-          <article className="modalArticle">
-            <h2 className="modalTitle">{selectedMovie.title}</h2>
-            <section className="modalVisualsContainer">
+          <article className='modalArticle'>
+            <h2 className='modalTitle'>{selectedMovie.title}</h2>
+            <section className='modalVisualsContainer'>
               <img
-                className="modalImg"
+                className='modalImg'
                 src={`https://image.tmdb.org/t/p/w300${selectedMovie.poster_path}`}
                 alt={`${selectedMovie.title} poster`}
               />
-              <div className="trailerContainer">
+              <div className='trailerContainer'>
                 <iframe
-                  className="trailerIframe"
+                  className='trailerIframe'
                   src={trailerURL}
-                  title="YouTube trailer"
+                  title='YouTube trailer'
                   allowFullScreen
                 ></iframe>
               </div>
             </section>
-            <section className="modalTextContainer">
-              <section className="modalAboutContainer">
-                <p className="modalText">Release Date: {selectedMovie.release_date}</p>
-                <p className="modalText">Runtime: {selectedMovie.runtime} minutes</p>
-                <p className="modalText">
+            <section className='modalTextContainer'>
+              <section className='modalAboutContainer'>
+                <p className='modalText'>Release Date: {selectedMovie.release_date}</p>
+                <p className='modalText'>Runtime: {selectedMovie.runtime} minutes</p>
+                <p className='modalText'>
                   Genres: {selectedMovie.genres.map((g) => g.name).join(', ')}
                 </p>
               </section>
               <section>
-                <p className="modalOverview">{selectedMovie.overview}</p>
+                <p className='modalOverview'>{selectedMovie.overview}</p>
               </section>
             </section>
           </article>
-        )}
+        )};
       </Modal>
 
-      <footer className="appFooter">
+      <footer className='appFooter'>
         <section>
-          <button className="appButtons" onClick={loadMore}>Load More</button>
+          <button className='appButtons' onClick={loadMore}>Load More</button>
         </section>
       </footer>
     </main>
   );
-}
+};
 
 export default App;
