@@ -44,7 +44,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-.modalContent {
+    .modalContent {
         width: 90vw;
         height: auto;
         max-height: 90vh;
