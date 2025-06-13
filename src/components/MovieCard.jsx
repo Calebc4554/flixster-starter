@@ -4,6 +4,7 @@ import '../components-css/MovieCard.css';
 const MovieCard = ({ imgURL, name, rating, onClick }) => {
     const [isFavorited, setIsFavorited] = useState(false);
     const [isBookmarked, setIsBookmarked] = useState(false);
+    const [isWatched, setIsWatched] = useState(false);
 
     const handleFavoriteClick = (e) => {
         e.stopPropagation();
@@ -15,24 +16,32 @@ const MovieCard = ({ imgURL, name, rating, onClick }) => {
         setIsBookmarked(!isBookmarked);
     };
 
+    const handleWatchedClick = (e) => {
+        e.stopPropagation();
+        setIsWatched(!isWatched);
+    };
+
     return (
-        <div className="movieCardContainer" onClick={onClick}>
-            <img className="movieIMG" src={imgURL} alt={name} />
-            <section className = "movieContent">
-                <div>
-                    <p className="movieName">{name}</p>
-                    <p className="movieRating">{rating}</p>
-                </div>
-                <div>
-                    <button className="heartAndFav" onClick={handleFavoriteClick}>
-                        <i className={isFavorited ? 'fas fa-heart favorited' : 'far fa-heart'}></i>
-                    </button>
-                    <button className="heartAndFav" onClick={handleBookmarkClick}>
-                        <i className={isBookmarked ? 'fas fa-bookmark bookmarked' : 'far fa-bookmark'}></i>
-                    </button>
-                </div>
-            </section>
-        </div>
+    <article className="movieCardContainer" onClick={onClick}>
+        <img className="movieIMG" src={imgURL} alt={name} />
+        <section className="movieContent">
+            <div>
+            <h2 className="movieName">{name}</h2>
+            <p className="movieRating">{rating}</p>
+            </div>
+            <div>
+            <button className="heartAndFav" onClick={handleFavoriteClick}>
+                <i className={isFavorited ? 'fas fa-heart favorited' : 'far fa-heart'}></i>
+            </button>
+            <button className="heartAndFav" onClick={handleBookmarkClick}>
+                <i className={isBookmarked ? 'fas fa-bookmark bookmarked' : 'far fa-bookmark'}></i>
+            </button>
+            <button className="heartAndFav" onClick={handleWatchedClick}>
+                <i className={isWatched ? 'fas fa-eye watched' : 'fas fa-eye-slash'}></i>
+            </button>
+            </div>
+        </section>
+    </article>
     );
 };
 

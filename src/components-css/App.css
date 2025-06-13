@@ -20,14 +20,14 @@
   background-color: #212121;
   height: 8vh;
   width: 100vw;
-  color: gold;
+  color: #FFB800;
   font-size: 3.5vw;
   padding-top: 1vw;
 }
 
 .appButtons {
   background-color: #212121;
-  color: gold;
+  color: #FFB800;
   height: 40%;
   width: 11%;
   margin: 1%;
@@ -37,7 +37,7 @@
 
 .selectButton {
   background-color: #212121;
-  color: gold;
+  color: #FFB800;
   height: 40%;
   width: 20%;
   margin: 1%;
@@ -76,7 +76,7 @@
   height: 22vh;
   width: auto;
   max-width: 90vw;
-  box-shadow: 0px 0px 3px 3px gold;
+  box-shadow: 0px 0px 3px 3px #FFB800;
   border-radius: 15px;
 }
 
@@ -89,7 +89,7 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   border-radius: 15px;
-  box-shadow: 0px 0px 2px 2px gold;
+  box-shadow: 0px 0px 2px 2px #FFB800;
   border: none;
 }
 
@@ -121,7 +121,7 @@
 
 .modalTitle {
   font-size: 1.8rem;
-  color: gold;
+  color: #FFB800;
   text-align: center;
   margin-bottom: 15px;
 }

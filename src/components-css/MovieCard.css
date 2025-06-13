@@ -1,14 +1,14 @@
 .movieCardContainer {
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 0px 3px 3px gold;
+    box-shadow: 0px 0px 3px 3px #FFB800;
     border: #212121;
     margin: 20px;
     border-radius: 10px;
     width: 12%;
     height: auto;
     background-color: #212121;
-    color: gold;
+    color: #FFB800;
     height: 100%;
 }
 
@@ -17,8 +17,8 @@
     transition: 0.5s ease;
     cursor: pointer;
     background-color:rgb(53, 52, 52);
-    color: gold;
-    box-shadow: 0px 0px 10px 10px gold;
+    color: #FFB800;
+    box-shadow: 0px 0px 10px 10px #FFB800;
 }
 
 .movieContent {
@@ -65,7 +65,11 @@
 }
 
 .bookmarked {
-    color: gold;
+    color: #FFB800;
+}
+
+.watched {
+    color: lightskyblue;
 }
 
 
@@ -75,7 +79,7 @@
         height: auto;
         margin: 10px;
         background-color: #212121;
-        color: gold;
+        color: #FFB800;
     }
 
     .movieCardContainer:hover {
@@ -83,8 +87,8 @@
         transition: 0.5s ease;
         cursor: pointer;
         background-color:rgb(53, 52, 52);
-        color: gold;
-        box-shadow: 0px 0px 5px 5px gold;
+        color: #FFB800;
+        box-shadow: 0px 0px 5px 5px #FFB800;
     }
 
     .movieIMG {
@@ -97,7 +101,7 @@
         font-size: 3vw;
         text-align: center;
         word-wrap: break-word;
-        color: gold;
+        color: #FFB800;
     }
     
     .movieRating {
@@ -118,7 +122,7 @@
         height: auto;
         margin: 10px;
         background-color: #212121;
-        color: gold;
+        color: #FFB800;
     }
 
     .movieIMG {
@@ -131,7 +135,7 @@
         font-size: 2.5vw;
         text-align: center;
         word-wrap: break-word;
-        color: gold;
+        color: #FFB800;
     }
     
     .movieRating {

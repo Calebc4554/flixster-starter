@@ -20,9 +20,9 @@
     max-width: 700px;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0px 0px 5px 5px gold;
+    box-shadow: 0px 0px 5px 5px #FFB800;;
     position: relative;
-    color: gold;
+    color: #FFB800;;
     font-size: 1.5vh;
     box-sizing: border-box;
     }
@@ -35,7 +35,7 @@
     font-size: 1.5rem;
     cursor: pointer;
     background: transparent;
-    color: gold;
+    color: #FFB800;;
     }
 
 @media only screen and (max-width: 600px) {

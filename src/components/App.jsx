@@ -144,64 +144,85 @@ const App = () => {
         });
     };
 
-
-
-
-
-    
-
-    
     return (
-    <main className="App">
-    <header>
-      <section className = "titleSection">
-        <h1> FLIXSTER </h1>
-      </section>
-          <article className = "appArticle">
-            <input className = "input" type="text" value={searchQuery} onKeyDown = {(event)=> {if (event.key === "Enter") {handleSearchClick()}}} onChange={handleSearchChange} placeholder="Search" />
-            <button className = "appButtons" onClick={handleSearchClick}> Search</button>
-            <button className = "appButtons" onClick={handleClearClick}> Clear </button>
-            <select className = "selectButton" value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+      <main className="App">
+        <header>
+          <section className="titleSection">
+            <h1> FLIXSTER </h1>
+          </section>
+          <section className="appArticle">
+            <input
+              className="input"
+              type="text"
+              value={searchQuery}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  handleSearchClick();
+                }
+              }}
+              onChange={handleSearchChange}
+              placeholder="Search"
+            />
+            <button className="appButtons" onClick={handleSearchClick}> Search</button>
+            <button className="appButtons" onClick={handleClearClick}> Clear </button>
+            <select
+              className="selectButton"
+              value={sortOption}
+              onChange={(e) => setSortOption(e.target.value)}
+            >
               <option value="title">Title (alphabetic, A-Z)</option>
               <option value="releaseDate">Release date (chronologically, most recent to oldest)</option>
               <option value="voteAverage">Vote average (descending, highest to lowest)</option>
             </select>
-        </article>
-      </header>
-      <MovieList movies={sortMovies(movies, sortOption)} onMovieClick={handleMovieClick} />
-      <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        {selectedMovie && (
-          <article className = "modalArticle">
-            <h2 className = "modalTitle" >{selectedMovie.title}</h2>
-            <div className = "modalVisualsContainer">
-              <img className = "modalImg" src={`https://image.tmdb.org/t/p/w300${selectedMovie.poster_path}`} alt={`${selectedMovie.title} poster`}/>
-              <div className="trailerContainer">
-                      <iframe className="trailerIframe" src={trailerURL} title="YouTube trailer" allowFullScreen> </iframe>
-              </div>
-            </div>
-            <div className = "modalTextContainer">
-
-              <div className = "modalAboutContainer">
-                <p className = "modalText" >Release Date: {selectedMovie.release_date}</p>
-                <p className = "modalText">Runtime: {selectedMovie.runtime} minutes</p>
-                <p className = "modalText">Genres: {selectedMovie.genres.map(g => g.name).join(', ')}</p>
-              </div>
-              
-              <div>
-                <p className = "modalOverview" >{selectedMovie.overview}</p>
-              </div>
-
-            </div>
-
-          </article>
-        )}
-      </Modal>
-      <footer className = "appFooter" >
+          </section>
+        </header>
+        
         <section>
-          <button className = "appButtons" onClick={loadMore}>Load More</button>
+          <MovieList movies={sortMovies(movies, sortOption)} onMovieClick={handleMovieClick} />
         </section>
-      </footer>
-    </main>
+
+        <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          {selectedMovie && (
+            <article className="modalArticle">
+              <h2 className="modalTitle">{selectedMovie.title}</h2>
+              <section className="modalVisualsContainer">
+                <img
+                  className="modalImg"
+                  src={`https://image.tmdb.org/t/p/w300${selectedMovie.poster_path}`}
+                  alt={`${selectedMovie.title} poster`}
+                />
+                <div className="trailerContainer">
+                  <iframe
+                    className="trailerIframe"
+                    src={trailerURL}
+                    title="YouTube trailer"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </section>
+              <section className="modalTextContainer">
+                <section className="modalAboutContainer">
+                  <p className="modalText">Release Date: {selectedMovie.release_date}</p>
+                  <p className="modalText">Runtime: {selectedMovie.runtime} minutes</p>
+                  <p className="modalText">
+                    Genres: {selectedMovie.genres.map((g) => g.name).join(', ')}
+                  </p>
+                </section>
+                <section>
+                  <p className="modalOverview">{selectedMovie.overview}</p>
+                </section>
+              </section>
+            </article>
+          )}
+        </Modal>
+
+        <footer className="appFooter">
+          <section>
+            <button className="appButtons" onClick={loadMore}>Load More</button>
+          </section>
+        </footer>
+      </main>
+
   );
 }
 
