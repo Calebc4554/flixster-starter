@@ -43,7 +43,6 @@ const App = () => {
     setPage(1);
   };
 
-
   const fetchMovies = () => {
     const options = {
       method: 'GET',
@@ -75,7 +74,6 @@ const App = () => {
         setIsSearchClicked(false);
       });
   };
-
 
   const loadMore = () => {
     setPage(prevPage => prevPage + 1);
@@ -161,8 +159,8 @@ const App = () => {
             onChange={handleSearchChange}
             placeholder='Search'
           />
-          <button className='appButtons' onClick={handleSearchClick}> Search</button>
-          <button className='appButtons' onClick={handleClearClick}> Clear </button>
+          <button type="button" className='appButtons' onClick={handleSearchClick}> Search</button>
+          <button type="button" className='appButtons' onClick={handleClearClick}> Clear </button>
           <select
             className='selectButton'
             value={sortOption}
@@ -209,12 +207,12 @@ const App = () => {
               </section>
             </section>
           </article>
-        )};
+        )}
       </Modal>
 
       <footer className='appFooter'>
         <section>
-          <button className='appButtons' onClick={loadMore}>Load More</button>
+          <button type="button" className='appButtons' onClick={loadMore}>Load More</button>
         </section>
       </footer>
     </main>

@@ -30,13 +30,13 @@ const MovieCard = ({ imgURL, name, rating, onClick }) => {
                 <p className='movieRating'>{rating}</p>
             </div>
             <div>
-                <button className='heartFavWatched' onClick={handleFavoriteClick}>
+                <button type="button" className='heartFavWatched' onClick={handleFavoriteClick}>
                     <i className={isFavorited ? 'fas fa-heart favorited' : 'far fa-heart'}></i>
                 </button>
-                <button className='heartFavWatched' onClick={handleBookmarkClick}>
+                <button type="button" className='heartFavWatched' onClick={handleBookmarkClick}>
                     <i className={isBookmarked ? 'fas fa-bookmark bookmarked' : 'far fa-bookmark'}></i>
                 </button>
-                <button className='heartFavWatched' onClick={handleWatchedClick}>
+                <button type="button" className='heartFavWatched' onClick={handleWatchedClick}>
                     <i className={isWatched ? 'fas fa-eye watched' : 'fas fa-eye-slash'}></i>
                 </button>
             </div>
@@ -44,5 +44,4 @@ const MovieCard = ({ imgURL, name, rating, onClick }) => {
     </article>
     );
 };
-
 export default MovieCard;
