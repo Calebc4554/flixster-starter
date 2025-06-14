@@ -8,7 +8,6 @@
     margin: 20px;
     border-radius: 10px;
     width: 12%;
-    height: auto;
     /* Dark Grey */
     background-color: #212121;
     /* Dark Gold */
@@ -21,8 +20,6 @@
     transition: 0.5s ease;
     cursor: pointer;
     background-color:rgb(53, 52, 52);
-    /* Dark Gold */
-    color: #FFB800;
     /* Dark Gold */
     box-shadow: 0px 0px 10px 10px #FFB800;
 }
@@ -82,43 +79,21 @@
         width: 45%;
         height: auto;
         margin: 10px;
-        /* Dark Grey */
-        background-color: #212121;
-        /* Dark Gold */
-        color: #FFB800;
     }
 
     .movieCardContainer:hover {
         transform: scale(1.02);
         transition: 0.5s ease;
         cursor: pointer;
-        /* Dark Grey */
-        background-color:#212121;
-        /* Dark Gold */
-        color: #FFB800;
-        /* Dark Gold */
-        box-shadow: 0px 0px 5px 5px #FFB800;
-    }
-
-    .movieIMG {
-        width: 100%;
-        height: auto;
-        border-radius: 10px 10px 0px 0px;
     }
 
     .movieName {
         font-size: 3vw;
         text-align: center;
-        word-wrap: break-word;
-        /* Dark Gold */
-        color: #FFB800;
     }
     
     .movieRating {
         font-size: 2.5vw;
-        text-align: center;
-        word-wrap: break-word;
-        color: lightgray;
     }
 
     .heartFavWatchedButtons {
@@ -131,30 +106,13 @@
         width: 25%;
         height: auto;
         margin: 10px;
-        /* Dark Grey */
-        background-color: #212121;
-        /* Dark Gold */
-        color: #FFB800;
-    }
-
-    .movieIMG {
-        width: 100%;
-        height: auto;
-        border-radius: 10px 10px 0px 0px;
     }
 
     .movieName {
         font-size: 2.5vw;
-        text-align: center;
-        word-wrap: break-word;
-        /* Dark Gold */
-        color: #FFB800;
     }
     
     .movieRating {
-        font-size: 2v;
-        text-align: center;
-        word-wrap: break-word;
-        color: lightgray;
+        font-size: 1.9vh;
     }
 }
