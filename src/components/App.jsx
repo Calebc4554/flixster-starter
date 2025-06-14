@@ -201,7 +201,6 @@ const App = () => {
           </article>
         )}
       </Modal>
-
       <footer className='appFooter'>
         <section>
           <button type='button' className='appButtons' onClick={loadMore}>Load More</button>
@@ -210,10 +209,8 @@ const App = () => {
     </main>
   );
 };
-
 // TODO: Implement a Sidebar with navigation links to Home, Favorites, and Watched pages.
 // - Home page: shows all movies in a grid, with search and sort options.
 // - Favorites page: shows only favorited movies in a grid view.
 // - Watched page: shows only watched movies in a grid view.
-
 export default App;
