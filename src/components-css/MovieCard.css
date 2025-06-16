@@ -1,118 +1,118 @@
 .movieCardContainer {
-    display: flex;
-    flex-direction: column;
-    /* Dark Gold */
-    box-shadow: 0px 0px 3px 3px #FFB800;
-    /* Dark Grey */
-    border: #212121;
-    margin: 20px;
-    border-radius: 10px;
-    width: 12%;
-    /* Dark Grey */
-    background-color: #212121;
-    /* Dark Gold */
-    color: #FFB800;
-    height: 25vw;
+	display: flex;
+	flex-direction: column;
+	/* Dark Gold */
+	box-shadow: 0px 0px 3px 3px #ffb800;
+	/* Dark Grey */
+	border: #212121;
+	margin: 20px;
+	border-radius: 10px;
+	width: 12%;
+	/* Dark Grey */
+	background-color: #212121;
+	/* Dark Gold */
+	color: #ffb800;
+	height: 25vw;
 }
 
 .movieCardContainer:hover {
-    transform: scale(1.04);
-    transition: 0.5s ease;
-    cursor: pointer;
-    background-color:rgb(53, 52, 52);
-    /* Dark Gold */
-    box-shadow: 0px 0px 10px 10px #FFB800;
+	transform: scale(1.04);
+	transition: 0.5s ease;
+	cursor: pointer;
+	background-color: rgb(53, 52, 52);
+	/* Dark Gold */
+	box-shadow: 0px 0px 10px 10px #ffb800;
 }
 
 .movieContentContainer {
-    height: 11vh;
-    width: auto;
-    align-content: center;
+	height: 11vh;
+	width: auto;
+	align-content: center;
 }
 
 .movieIMG {
-    width: 100%;
-    height: auto;
-    border-radius: 10px 10px 0px 0px;
+	width: 100%;
+	height: auto;
+	border-radius: 10px 10px 0px 0px;
 }
 
 .movieName {
-    font-size: 1vw;
-    font-weight: bold;
-    margin: 3px;
-    flex-wrap: wrap;
-    word-wrap: break-word;
+	font-size: 1vw;
+	font-weight: bold;
+	margin: 3px;
+	flex-wrap: wrap;
+	word-wrap: break-word;
 }
 
 .movieRating {
-    font-size: .75vw;
-    color: lightgrey;
-    margin: 2px;
-    word-wrap: break-word;
+	font-size: 0.75vw;
+	color: lightgrey;
+	margin: 2px;
+	word-wrap: break-word;
 }
 
 .heartFavWatchedButtons {
-    background: none;
-    border: none;
-    font-size: 1.5vw;
-    cursor: pointer;
-    color: grey;
-    margin-right: .2vh;
-    margin-left: .2vh;
+	background: none;
+	border: none;
+	font-size: 1.5vw;
+	cursor: pointer;
+	color: grey;
+	margin-right: 0.2vh;
+	margin-left: 0.2vh;
 }
 
 .favorited {
-    color: red;
+	color: red;
 }
 
 .bookmarked {
-    /* Dark Gold */
-    color: #FFB800;
+	/* Dark Gold */
+	color: #ffb800;
 }
 
 .watched {
-    color: lightskyblue;
+	color: lightskyblue;
 }
 
 @media only screen and (max-width: 600px) {
-    .movieCardContainer {
-        width: 45%;
-        height: auto;
-        margin: 10px;
-    }
+	.movieCardContainer {
+		width: 45%;
+		height: auto;
+		margin: 10px;
+	}
 
-    .movieCardContainer:hover {
-        transform: scale(1.02);
-        transition: 0.5s ease;
-        cursor: pointer;
-    }
+	.movieCardContainer:hover {
+		transform: scale(1.02);
+		transition: 0.5s ease;
+		cursor: pointer;
+	}
 
-    .movieName {
-        font-size: 3vw;
-        text-align: center;
-    }
-    
-    .movieRating {
-        font-size: 2.5vw;
-    }
+	.movieName {
+		font-size: 3vw;
+		text-align: center;
+	}
 
-    .heartFavWatchedButtons {
-        font-size: 3.5vw;
-    }
+	.movieRating {
+		font-size: 2.5vw;
+	}
+
+	.heartFavWatchedButtons {
+		font-size: 3.5vw;
+	}
 }
 
 @media only screen and (max-width: 400px) {
-    .movieCardContainer {
-        width: 25%;
-        height: auto;
-        margin: 10px;
-    }
+	.movieCardContainer {
+		width: 25%;
+		height: auto;
+		margin: 10px;
+	}
 
-    .movieName {
-        font-size: 2.5vw;
-    }
-    
-    .movieRating {
-        font-size: 1.9vh;
-    }
+	.movieName {
+		font-size: 2.5vw;
+	}
+
+	.movieRating {
+		font-size: 1.9vh;
+	}
 }

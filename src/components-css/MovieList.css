@@ -1,10 +1,9 @@
 .movieContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    border: 10px;
-    /* Dark Grey */
-    background-color: #595959;
-    height: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	border: 10px;
+	/* Dark Grey */
+	background-color: #595959;
+	height: auto;
 }
-
